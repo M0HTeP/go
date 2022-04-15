@@ -23,8 +23,8 @@ func initDatabase() {
 		panic("faild to connect database")
 	}
 	fmt.Println("Connection opened to database")
-	database.DBConn.AutiMigrate(&lead.Lead{})
-	ftm.Println("Database Migrated")
+	database.DBConn.AutoMigrate(&lead.Lead{})
+	fmt.Println("Database Migrated")
 }
 
 func main() {
