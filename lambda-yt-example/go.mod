@@ -1,4 +1,4 @@
-module github.com/M0HTeP/go-lambda-function
+module github.com/M0HTeP/go/go-lambda-function
 
 go 1.18
 
