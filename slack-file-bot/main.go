@@ -14,7 +14,7 @@ func main() {
 	os.Setenv("CHANNEL_ID", "C03BQJE7LKW")   // создаем среду с ID канала
 	api := slack.New(os.Getenv("SLACK_BOT_TOKEN"))   // создаем переменную, в которую передаем нового клиента с токеном
 	channelArr := []string{os.Getenv("CHANNEL_ID")}  // получаем ID канала
-	fileArr := []string{"ZIPL.pdf"}    //  храним в переменной файл в виде строк
+	fileArr := []string{"TEST.pdf"}    //  храним в переменной файл в виде строк
 
 	for i := 0; i < len(fileArr); i++ {     //  проходимся циклом по файлу
 		params := slack.FileUploadParameters{    //  получаем параметры для загрузки
