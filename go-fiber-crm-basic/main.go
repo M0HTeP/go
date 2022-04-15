@@ -20,18 +20,18 @@ func initDatabase() {
 	var err error
 	database.DBConn, err = gorm.Open("sqlite3", "leads.db") // открываем БД leads.db
 	if err != nil {
-		panic("faild to connect database")
+		panic("faild to connect database")	//    если подключение не удалось говорим об ошибке
 	}
-	fmt.Println("Connection opened to database")
-	database.DBConn.AutoMigrate(&lead.Lead{})
-	fmt.Println("Database Migrated")
+	fmt.Println("Connection opened to database")	//    если подключились к БД - сообщаем об этом
+	database.DBConn.AutoMigrate(&lead.Lead{})	//    автомиграция БД (добавление недостающих полей для заполнения БД, например: дата создания поля)
+	fmt.Println("Database Migrated")	//    говорим что миграция успешно завершена
 }
 
 func main() {
-	app := fiber.New()
-	initDatabase()
-	setupRoutes(app)
-	app.Listen(3000)
+	app := fiber.New()	//    создаем новый инстанс
+	initDatabase()	//    инициализируем БД
+	setupRoutes(app)	//    настраиваем рауты (ссылки)
+	app.Listen(3000)	//    прослушиваем порт(на этом порту открываем возможность работы с БД)
 	defer database.DBConn.Close() // после выполнения функции закрыть БД
 
 }
