@@ -43,3 +43,4 @@ func handler(req events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse
 		default:
 			return handlers.UnhandledMethod()
 		}
+}
