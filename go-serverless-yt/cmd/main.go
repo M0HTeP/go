@@ -16,30 +16,30 @@ var(
 )
 
 func main(){
-	region := os.Getenv("AWS_REGION")
-	awsSession, err := session.NewSession(&aws.Config{
-		Region: aws.String(region)},)
+	region := os.Getenv("AWS_REGION")	//	получаем регион
+	awsSession, err := session.NewSession(&aws.Config{	//	создаем новую сессию
+		Region: aws.String(region)},)	//	записываем регион в переменную
 
 	if err!=nil{
 		return
 	}
-	dynaClient = dynamodb.New(awsSession)
-	lambda.Start(handler)
+	dynaClient = dynamodb.New(awsSession)	//	начинает новую сессию в dynamodb
+	lambda.Start(handler)	//	запуск лямбда-функции
 }
 
 
-const tableName = "go-serverless-yt"
+const tableName = "go-serverless-yt"	//	название таблицы
 
-func handler(req events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error){
-		switch req.HTTPMethod{
+func handler(req events.APIGatewayProxyRequest) (*events.APIGatewayProxyResponse, error){	//	хендлер запроса события(?)
+		switch req.HTTPMethod{	//	свич(цикл)
 		case "GET":
-			return handlers.GetUser(req, tableName, dynaClient)
+			return handlers.GetUser(req, tableName, dynaClient)	//	получение пользователя
 		case "POST":
-			return handlers.CreateUser(req, tableName, dynaClient)
+			return handlers.CreateUser(req, tableName, dynaClient)	//	создание пользователя
 		case "PUT":
-			return handlers.UpdateUser(req, tableName, dynaClient)
+			return handlers.UpdateUser(req, tableName, dynaClient)	//	изменение данных пользователя
 		case "DELETE":
-			return handlers.DeleteUser(req, tableName, dynaClient)
+			return handlers.DeleteUser(req, tableName, dynaClient)	//	удаление пользователя
 		default:
 			return handlers.UnhandledMethod()
 		}
