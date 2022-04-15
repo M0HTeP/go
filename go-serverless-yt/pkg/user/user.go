@@ -11,7 +11,7 @@ import(
     "github.com/aws/aws-sdk-go/service/dynamodb/dynamodbiface"
 )
 
-var(
+var(	//	описываем возможные ошибки
 	ErrorFailedToUnmarshalRecord = "failed to unmarshal record"
 	ErrorFailedToFetchRecord = "failed to fetch record"
 	ErrorInvalidUserData = "invalid user data"
@@ -22,13 +22,13 @@ var(
 	ErrorUserAlreadyExists = "user.User already exists"
 	ErrorUserDoesNotExist = "user.User does not exist"
 )
-
+	//	создаем структуру хранения пользователей
 type User struct{
 	Email 		string	`json:"email"`
 	FirstName	string 	`json:"firstName"`
 	LastName	string 	`json:"lastName"`
 }
-
+	//	 плучаем инфу о пользователе по электронной почте(вместо ID)
 func FetchUser(email, tableName string, dynaClient dynamodbiface.DynamoDBAPI)(*User, error){
 
 	input := &dynamodb.GetItemInput{
@@ -52,7 +52,7 @@ func FetchUser(email, tableName string, dynaClient dynamodbiface.DynamoDBAPI)(*U
 	}
 	return item, nil
 }
-
+	//	получение информации о ВСЕХ пользователях
 func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI)(*[]User, error){
 	input := &dynamodb.ScanInput{
 		TableName: aws.String(tableName),
@@ -66,7 +66,7 @@ func FetchUsers(tableName string, dynaClient dynamodbiface.DynamoDBAPI)(*[]User,
 	err = dynamodbattribute.UnmarshalListOfMaps(result.Items, item)
 	return item, nil
 }
-
+	//	создание нового пользователя
 func CreateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI)(
 	*User,
 	error,
@@ -102,7 +102,7 @@ func CreateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 	}
 	return &u, nil
 }
-
+	//	изменение данных пользователя
 func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI)(
 	*User,
 	error,
@@ -133,7 +133,7 @@ func UpdateUser(req events.APIGatewayProxyRequest, tableName string, dynaClient 
 	}
 	return &u, nil
 }
-
+	//	удаление пользователя
 func DeleteUser(req events.APIGatewayProxyRequest, tableName string, dynaClient dynamodbiface.DynamoDBAPI) error{
 
 
