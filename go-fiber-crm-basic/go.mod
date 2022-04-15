@@ -1,4 +1,4 @@
-module github.com/M0HTeP/go-fiber-crm-basic
+module github.com/M0HTeP/go/go-fiber-crm-basic
 
 go 1.18
 
