@@ -7,24 +7,25 @@ import (
 	"github.com/slack-go/slack"
 )
 
+// основная функция бота
 func main() {
 
-	os.Setenv("SLACK_BOT_TOKEN", "xoxb-310246501329-2246808119766-C2TQU9hIq6qMt5vloSXVSkQ7")
-	os.Setenv("CHANNEL_ID", "C9478EZ7B")
-	api := slack.New(os.Getenv("SLACK_BOT_TOKEN"))
-	channelArr := []string{os.Getenv("CHANNEL_ID")}
-	fileArr := []string{"ZIPL.pdf"}
+	os.Setenv("SLACK_BOT_TOKEN", "xoxb-3398622637444-3420207474624-H161fADMVY9mH4Id9FWbF7H3") // создаем среду с токеном бота
+	os.Setenv("CHANNEL_ID", "C03BQJE7LKW")   // создаем среду с ID канала
+	api := slack.New(os.Getenv("SLACK_BOT_TOKEN"))   // создаем переменную, в которую передаем нового клиента с токеном
+	channelArr := []string{os.Getenv("CHANNEL_ID")}  // получаем ID канала
+	fileArr := []string{"ZIPL.pdf"}    //  храним в переменной файл в виде строк
 
-	for i := 0; i < len(fileArr); i++ {
-		params := slack.FileUploadParameters{
-			Channels: channelArr,
-			File:     fileArr[i],
+	for i := 0; i < len(fileArr); i++ {     //  проходимся циклом по файлу
+		params := slack.FileUploadParameters{    //  получаем параметры для загрузки
+			Channels: channelArr,    //  канал
+			File:     fileArr[i],    //  сам файл
 		}
 		file, err := api.UploadFile(params)
 		if err != nil {
-			fmt.Printf("%s\n", err)
+			fmt.Printf("%s\n", err)    //  в случае ошибки выводим сообщение
 			return
 		}
-		fmt.Printf("Name: %s, URL:%s\n", file.Name, file.URL)
+		fmt.Printf("Name: %s, URL:%s\n", file.Name, file.URL)    //  выводим сообщение с именем файла и ссылкой загрузки
 	}
 }
