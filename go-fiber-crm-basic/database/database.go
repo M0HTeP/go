@@ -9,5 +9,5 @@ _"github.com/jinzhu/gorm/dialects/sqlite"
 
 
 var(
-	DBCon *gorm.DB
+	DBConn *gorm.DB
 )
