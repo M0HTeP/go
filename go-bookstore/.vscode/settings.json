@@ -1,0 +1,14 @@
+{
+	"go.autocompleteUnimportedPackages": true,
+	"go.languageServerExperimentalFeatures": {
+		"diagnostics": false
+	},
+	"go.lintOnSave": "package",
+	"go.vetOnSave": "off",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": false,
+	},
+	"editor.formatOnSave": false,
+	"editor.formatOnPaste": false,
+	"go.useLanguageServer": true,
+}
