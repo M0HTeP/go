@@ -1,4 +1,4 @@
-module github.com/M0HTeP/go-fiber-mongo-hrms
+module github.com/M0HTeP/go/go-fiber-mongo-hrms
 
 go 1.18
 
