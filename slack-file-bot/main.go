@@ -10,7 +10,7 @@ import (
 // основная функция бота
 func main() {
 
-	os.Setenv("SLACK_BOT_TOKEN", "xoxb-3398622637444-3420207474624-H161fADMVY9mH4Id9FWbF7H3") // создаем среду с токеном бота
+	os.Setenv("SLACK_BOT_TOKEN", "xoxb-3398622637444-3420207474624-hsnHf9BSQRtYWD8Uf6Y6SjHx") // создаем среду с токеном бота
 	os.Setenv("CHANNEL_ID", "C03BQJE7LKW")   // создаем среду с ID канала
 	api := slack.New(os.Getenv("SLACK_BOT_TOKEN"))   // создаем переменную, в которую передаем нового клиента с токеном
 	channelArr := []string{os.Getenv("CHANNEL_ID")}  // получаем ID канала
