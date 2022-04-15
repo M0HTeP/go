@@ -9,5 +9,5 @@ _"github.com/jinzhu/gorm/dialects/sqlite"
 
 
 var(
-	DBConn *gorm.DB
+	DBConn *gorm.DB 	//    переменная, с помощью которой соединяемся с БД
 )
