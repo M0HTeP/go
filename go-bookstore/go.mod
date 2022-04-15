@@ -1,4 +1,4 @@
-module github.com/M0HTeP/go-bookstore
+module github.com/M0HTeP/go/go-bookstore
 
 go 1.18
 
