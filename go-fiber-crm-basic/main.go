@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/go-fiber-crm-basic/database"
+	"github.com/M0HTeP/go-fiber-crm-basic/database"
 	"github.com/gofiber/fiber"
 )
 
