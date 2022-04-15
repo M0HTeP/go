@@ -1,6 +1,6 @@
-module guthub.com/M0HTeP/go-serverless-yt
+module github.com/akhil/go-serverless-yt
 
-go 1.18
+go 1.16
 
 require (
 	github.com/aws/aws-lambda-go v1.27.0
